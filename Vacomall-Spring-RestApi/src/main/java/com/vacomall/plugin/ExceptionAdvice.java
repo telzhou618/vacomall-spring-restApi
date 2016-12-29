@@ -1,4 +1,4 @@
-package com.vacomall.plugin.exception;
+package com.vacomall.plugin;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.ValidationException;

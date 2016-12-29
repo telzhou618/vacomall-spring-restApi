@@ -15,7 +15,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import com.vacomall.common.anno.IgnoreSecurity;
+import com.vacomall.common.anno.TokenSecurity;
 /**
  * Token验证
  * @author Administrator
@@ -45,21 +45,23 @@ public class SecurityAspect {
 		// 从切点上获取目标方法
 		MethodSignature methodSignature = (MethodSignature) pjp.getSignature();
 		Method method = methodSignature.getMethod();
-		// 若目标方法忽略了安全性检查，则直接调用目标方法
-		if (method.isAnnotationPresent(IgnoreSecurity.class)) {
-			return pjp.proceed();
+		/**
+		 * 验证Token
+		 */
+		if (method.isAnnotationPresent(TokenSecurity.class)) {
+			// 从 request header 中获取当前 token
+			HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();  
+			String token = 	request.getHeader(DEFAULT_TOKEN_NAME);
+			if(StringUtils.isEmpty(token)){
+				throw new TokenException("客户端X-Token参数不能为空");
+			}
+			// 检查 token 有效性
+			if (!tokenManager.checkToken(token)) {
+				String message = String.format("Token [%s] 非法", token);
+				throw new TokenException(message);
+			}
 		}
-		// 从 request header 中获取当前 token
-		HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();  
-		String token = 	request.getHeader(DEFAULT_TOKEN_NAME);
-		if(StringUtils.isEmpty(token)){
-			throw new TokenException("客户端X-Token参数不能为空");
-		}
-		// 检查 token 有效性
-		if (!tokenManager.checkToken(token)) {
-			String message = String.format("Token [%s] 非法", token);
-			throw new TokenException(message);
-		}
+		
 		// 调用目标方法
 		return pjp.proceed();
 	}

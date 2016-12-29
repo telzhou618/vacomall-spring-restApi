@@ -1,5 +1,7 @@
 package com.vacomall.controller;
 
+import io.swagger.annotations.ApiOperation;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -7,12 +9,12 @@ import javax.annotation.Resource;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.vacomall.common.anno.IgnoreSecurity;
 import com.vacomall.common.anno.Log;
 import com.vacomall.common.bean.Response;
 import com.vacomall.common.util.ValidateUtil;
@@ -35,8 +37,8 @@ public class LoginController {
 	
 	@Autowired private  ISysUserService sysUserService;
 	
-	@IgnoreSecurity
 	@Log("用户登录")
+	@ApiOperation(value = "登陆", httpMethod = "POST", produces = MediaType.APPLICATION_JSON_VALUE, response = Response.class)
     @RequestMapping(value = "/doLogin",method=RequestMethod.POST)  
     public  Response hello(@Valid SysUser user, BindingResult result){
 		
@@ -58,7 +60,6 @@ public class LoginController {
 	 * 退出系统
 	 * @return
 	 */
-	@IgnoreSecurity
 	@Log("用户退出")
     @RequestMapping(value = "/logout",method=RequestMethod.POST)  
     public  Response logout(){
