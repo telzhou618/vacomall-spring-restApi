@@ -55,4 +55,14 @@ public class LoginController {
 		
 		return new Response().success("退出成功.");
     }  
+	
+	/**
+	 * 退出系统
+	 * @return
+	 */
+	@IgnoreSecurity
+    @RequestMapping(value = "/test",method=RequestMethod.GET)  
+    public  Response test(){
+		throw new RuntimeException("server.exception");
+    }  
 }

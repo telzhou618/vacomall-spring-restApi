@@ -1,5 +1,6 @@
 package com.vacomall;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.ValidationException;
 
 import org.apache.log4j.Logger;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
 import com.vacomall.bean.Response;
+import com.vacomall.util.ResUtil;
 /**
  * 全局异常处理器
  * @author Administrator
@@ -31,8 +33,7 @@ public class ExceptionAdvice {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(ValidationException.class)
     public Response handleValidationException(ValidationException e) {
-        logger.error("参数验证失败", e);
-        return new Response().failure("validation_exception");
+    	return render(ResUtil.get("validation.exception"), e);
     }
 	 /**
      * 400 - Bad Request
@@ -40,8 +41,7 @@ public class ExceptionAdvice {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public Response handleHttpMessageNotReadableException(HttpMessageNotReadableException e) {
-        logger.error("参数解析失败", e);
-        return new Response().failure("could_not_read_json");
+        return render(ResUtil.get("could.not.read.json"), e);
     }
 
     /**
@@ -49,9 +49,8 @@ public class ExceptionAdvice {
      */
     @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
-    public Response handleHttpRequestMethodNotSupportedException(HttpRequestMethodNotSupportedException e) {
-        logger.error("不支持当前请求方法", e);
-        return new Response().failure("request_method_not_supported");
+    public Response handleHttpRequestMethodNotSupportedException(HttpRequestMethodNotSupportedException e,HttpServletRequest request) {
+    	return render(ResUtil.get("request.method.not.supported",request.getMethod().toUpperCase()), e);
     }
 
     /**
@@ -60,8 +59,7 @@ public class ExceptionAdvice {
     @ResponseStatus(HttpStatus.UNSUPPORTED_MEDIA_TYPE)
     @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
     public Response handleHttpMediaTypeNotSupportedException(Exception e) {
-        logger.error("不支持当前媒体类型", e);
-        return new Response().failure("content_type_not_supported");
+        return render(ResUtil.get("content.type.not.supported"), e);
     }
 
     /**
@@ -70,24 +68,32 @@ public class ExceptionAdvice {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(NoHandlerFoundException.class)
     public Response handleNoHandlerFoundException(NoHandlerFoundException  e) {
-        logger.error("资源不存在", e);
-        return new Response().failure("not_found");
+        return render(ResUtil.get("not.found"), e);
     }
     
     /**
-     * 500 - Internal Server Error
+     * 500 - NullPointerException
      */
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(NullPointerException.class)
     public Response handleNullPointerException(NullPointerException e) {
-        logger.error("空指针异常", e);
-        return new Response().failure("null_pointer_exception");
+        return render(ResUtil.get("not.found"), e);
     }
-    
+    /**
+     * 500 - Exception
+     */
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(Exception.class)
     public Response handleException(Exception e) {
-        logger.error("服务运行异常", e);
-        return new Response().failure(e.getMessage());
+        return render(ResUtil.get(e.getMessage()), e);
+    }
+    
+    /**
+     * 统一相应异常信息
+     */
+    private Response render(String message, Exception e){
+    	logger.error(message, e);
+    	e.printStackTrace();
+    	return new Response().failure(message);
     }
 }
