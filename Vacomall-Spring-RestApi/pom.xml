@@ -9,7 +9,7 @@
 	<url>http://maven.apache.org</url>
 
 	<properties>
-		
+
 		<junit.version>4.12</junit.version>
 		<spring.version>4.2.6.RELEASE</spring.version>
 		<mybatis-plus.version>2.0</mybatis-plus.version>
@@ -24,6 +24,8 @@
 		<hibernate-validator.version>5.1.3.Final</hibernate-validator.version>
 		<guava.version>19.0</guava.version>
 		<redis.version>2.3.1</redis.version>
+		<swagger.version>2.2.2</swagger.version>
+		<classmate.version>1.3.1</classmate.version>
 		
 	</properties>
 
@@ -144,15 +146,15 @@
 			<artifactId>ehcache-core</artifactId>
 			<version>${ehcache.version}</version>
 		</dependency>
-		
-		<!--hibernate-validator  -->
+
+		<!--hibernate-validator -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>${hibernate-validator.version}</version>
 		</dependency>
-		
-		<!-- google-->
+
+		<!-- google -->
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
@@ -163,6 +165,22 @@
 			<groupId>redis.clients</groupId>
 			<artifactId>jedis</artifactId>
 			<version>${redis.version}</version>
+		</dependency>
+		<!-- swagger2 -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>${swagger.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>${swagger.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml</groupId>
+			<artifactId>classmate</artifactId>
+			<version>${classmate.version}</version>
 		</dependency>
 		
 	</dependencies>
