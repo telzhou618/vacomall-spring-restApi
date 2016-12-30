@@ -10,10 +10,10 @@
 6. 安全的Redis Token校验，保证接口的安全性.
 7. 注解+AOP日志记录
 8. 统一数据格式化,如：日期、人民币等.
-9. Mybatis-plus做为ＯＲＭ框架.
+9. Mybatis-plus做为ORM框架.
 10. 集成Swagger2接口管理.
 
 ```
-### 运行
+### DEMO运行结果
 ```
 ![输入图片说明](http://git.oschina.net/uploads/images/2016/1230/113028_70186e4b_89451.png "在这里输入图片标题")
