@@ -12,7 +12,7 @@
 8. 统一数据格式化,如：日期、人民币等.
 9. Mybatis-plus做为ORM框架.
 10. 集成Swagger2接口管理.
-11. 加入Ehcache缓存.
+11. 集成Ehcache缓存.
 
 ```
 ### DEMO运行结果
