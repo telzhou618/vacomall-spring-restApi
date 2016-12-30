@@ -53,7 +53,7 @@ public class SecurityAspect {
 			HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();  
 			String token = 	request.getHeader(DEFAULT_TOKEN_NAME);
 			if(StringUtils.isEmpty(token)){
-				throw new TokenException("客户端X-Token参数不能为空");
+				throw new TokenException("客户端X-Token参数不能为空,且从Header中传入,如果没有登录,请先登录获取Token");
 			}
 			// 检查 token 有效性
 			if (!tokenManager.checkToken(token)) {

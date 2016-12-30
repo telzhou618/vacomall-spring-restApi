@@ -7,9 +7,9 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 忽略Token验证
- * @author Administrator
- *
+ * Token安全校验
+ * @author Gaojun.Zhou
+ * @date 2016年12月30日 上午11:41:12
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)

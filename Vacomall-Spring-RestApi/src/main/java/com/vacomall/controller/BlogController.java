@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.baomidou.mybatisplus.plugins.Page;
+import com.vacomall.common.anno.TokenSecurity;
 import com.vacomall.common.bean.Response;
 import com.vacomall.common.util.ValidateUtil;
 import com.vacomall.entity.Blog;
@@ -89,6 +90,7 @@ public class BlogController {
 	/**
 	 * 删除博客
 	 */
+	@TokenSecurity //表示需要登录进行Token校验
 	@ApiOperation(value = "删除博客",response = Response.class)
     @RequestMapping(value = "/delete/{id}",method=RequestMethod.DELETE)  
     public  Response delete(@PathVariable("id") String id){
