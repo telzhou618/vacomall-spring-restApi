@@ -17,8 +17,8 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 import com.vacomall.common.bean.Response;
 /**
  * 全局异常处理器
- * @author Administrator
- *
+ * @author Gaojun.Zhou
+ * @date 2016年12月30日 上午11:48:47
  */
 @ControllerAdvice
 @ResponseBody
