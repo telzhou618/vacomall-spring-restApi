@@ -1,4 +1,7 @@
 package com.vacomall.common.bean;
+
+import io.swagger.annotations.ApiModelProperty;
+
 /**
  * 客户端响应对象
  * @author Administrator
@@ -9,7 +12,9 @@ public class Response {
 	private static final String OK = "ok";
 	private static final String ERROR = "error";
 
+	@ApiModelProperty("状态")
 	private Meta meta;
+	@ApiModelProperty("数据")
 	private Object data;
 
 	public Response success() {
@@ -48,8 +53,10 @@ public class Response {
 	}
 
 	public class Meta {
-
+		
+		@ApiModelProperty("返回状态")
 		private boolean success;
+		@ApiModelProperty("消息")
 		private String message;
 
 		public Meta(boolean success) {
