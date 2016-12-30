@@ -36,7 +36,7 @@ public class SwaggerConfig  {
 	  
 	    private ApiInfo apiInfo() {  
 	        return new ApiInfoBuilder()  
-	                .title("Swagger2构建RESTful APIs")  
+	                .title("Spring+Swagger2构建APP RESTful 接口 1.0")  
 	                .termsOfServiceUrl("http://www.cnblogs.com/zhougaojun")  
 	                .contact("GaoJun.Zhou")  
 	                .version("1.0")  

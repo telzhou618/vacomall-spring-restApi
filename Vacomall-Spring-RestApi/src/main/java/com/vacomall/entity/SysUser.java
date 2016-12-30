@@ -1,5 +1,7 @@
 package com.vacomall.entity;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -27,17 +29,20 @@ public class SysUser implements Serializable {
 
 	/** 主键 */
 	@TableId(type = IdType.UUID)
+	@ApiModelProperty("id")
 	private String id;
 
 	/** 用户名 */
 	@NotEmpty(message = "用户名不能为空")
 	@Length(min = 5, max = 20, message = "用户名长度为5-20之间")
 	@Pattern(regexp = "[a-zA-Z]{5,20}", message = "用户名不合法")
+	@ApiModelProperty("用户名")
 	private String userName;
 
 	/** 密码 */
 	@NotBlank(message="密码不能为空")
 	@Length(min = 5, max = 20, message = "密码长度为5-20之间")
+	@ApiModelProperty("密码")
 	private String password;
 
 	/** 用户状态,1-启用,-1禁用 */

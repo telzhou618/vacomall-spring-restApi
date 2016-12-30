@@ -9,7 +9,6 @@ import javax.annotation.Resource;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,9 +21,9 @@ import com.vacomall.entity.SysUser;
 import com.vacomall.plugin.token.TokenManager;
 import com.vacomall.service.ISysUserService;
 /**
- * 登录拦截器
- * @author Administrator
- *
+ * 登录控制器
+ * @author Gaojun.Zhou
+ * @date 2016年12月30日 上午11:26:17
  */
 @RestController
 @RequestMapping("/login")
@@ -38,7 +37,7 @@ public class LoginController {
 	@Autowired private  ISysUserService sysUserService;
 	
 	@Log("用户登录")
-	@ApiOperation(value = "登陆", httpMethod = "POST", produces = MediaType.APPLICATION_JSON_VALUE, response = Response.class)
+	@ApiOperation(value = "用户登陆",response = Response.class)
     @RequestMapping(value = "/doLogin",method=RequestMethod.POST)  
     public  Response hello(@Valid SysUser user, BindingResult result){
 		
@@ -61,18 +60,10 @@ public class LoginController {
 	 * @return
 	 */
 	@Log("用户退出")
+	@ApiOperation(value = "用户登出",response = Response.class)
     @RequestMapping(value = "/logout",method=RequestMethod.POST)  
     public  Response logout(){
 		
 		return new Response().success("退出成功.");
-    }  
-	
-	/**
-	 * 测试
-	 * @return
-	 */
-    @RequestMapping(value = "/test",method=RequestMethod.GET)  
-    public  Response test(){
-		throw new RuntimeException("服务器异常");
     }  
 }
