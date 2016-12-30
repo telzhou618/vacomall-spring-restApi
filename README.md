@@ -7,12 +7,12 @@
 3. 注解式校验.
 4. 全局异常处理.
 5. 灵活支持JSON和JSONP.
-6. 安全的Redis Token校验，保证接口的安全性.
-7. 注解+AOP日志记录
-8. 统一数据格式化,如：日期、人民币等.
-9. Mybatis-plus做为ORM框架.
-10. 集成Swagger2接口管理.
-11. 集成Ehcache缓存.
+6. 注解+AOP日志记录
+7. 统一数据格式化,如：日期、人民币等.
+8. 集成Mybatis-plus做为ORM框架.
+8. 集成Redis存储Token，保证接口的安全性.  
+10. 集成Ehcache缓存.
+11. 集成Swagger2接口管理.
 
 ```
 ### DEMO运行结果
