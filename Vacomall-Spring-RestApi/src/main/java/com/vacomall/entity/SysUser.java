@@ -45,20 +45,11 @@ public class SysUser implements Serializable {
 	@ApiModelProperty("密码")
 	private String password;
 
-	/** 用户状态,1-启用,-1禁用 */
-	private Integer userState;
-
 	/** 创建时间 */
 	private Date createTime;
 
 	/** 描述 */
 	private String userDesc;
-	
-	/** 头像 */
-	private String userImg;
-	
-	/** 部门主键 */
-	private String deptId;
 
 
 	public String getId() {
@@ -85,13 +76,6 @@ public class SysUser implements Serializable {
 		this.password = password;
 	}
 
-	public Integer getUserState() {
-		return this.userState;
-	}
-
-	public void setUserState(Integer userState) {
-		this.userState = userState;
-	}
 
 	public Date getCreateTime() {
 		return this.createTime;
@@ -108,22 +92,5 @@ public class SysUser implements Serializable {
 	public void setUserDesc(String userDesc) {
 		this.userDesc = userDesc;
 	}
-
-	public String getUserImg() {
-		return userImg;
-	}
-
-	public void setUserImg(String userImg) {
-		this.userImg = userImg;
-	}
-
-	public String getDeptId() {
-		return deptId;
-	}
-
-	public void setDeptId(String deptId) {
-		this.deptId = deptId;
-	}
-	
 	
 }

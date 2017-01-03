@@ -16,7 +16,8 @@
 	
 		
 	<bean id="objectMapper" class="com.vacomall.plugin.jackson.CustomObjectMapper" init-method="init">
-	    <property name="camelCaseToLowerCaseWithUnderscores" value="true"/>
+		<!-- 驼峰转为下划线 -->
+	    <property name="camelCaseToLowerCaseWithUnderscores" value="false"/>
 	    <property name="dateFormatPattern" value="yyyy-MM-dd HH:mm:ss"/>
 	</bean>
 	
