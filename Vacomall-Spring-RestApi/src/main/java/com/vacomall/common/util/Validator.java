@@ -122,11 +122,4 @@ public class Validator {
 	public static boolean isIPAddr(String ipAddr) {
 		return Pattern.matches(REGEX_IP_ADDR, ipAddr);
 	}
-
-	public static void main(String[] args) {
-		String username = "fdsdfsdj";
-		System.out.println(Validator.isUsername(username));
-		System.out.println(Validator.isChinese(username));
-		System.out.println(Validator.isMobile("123456789"));
-	}
 }
