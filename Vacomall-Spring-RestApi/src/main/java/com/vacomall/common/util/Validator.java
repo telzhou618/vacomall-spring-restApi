@@ -9,9 +9,9 @@ public class Validator {
 	public static final String REGEX_USERNAME = "^[a-zA-Z]\\w{5,17}$";
 
 	/**
-	 * 正则表达式：验证密码
+	 * 正则表达式：验证pass
 	 */
-	public static final String REGEX_PASSWORD = "^[a-zA-Z0-9]{6,16}$";
+	public static final String REGEX_PASS = "^[a-zA-Z0-9]{6,16}$";
 
 	/**
 	 * 正则表达式：验证手机号
@@ -54,13 +54,13 @@ public class Validator {
 	}
 
 	/**
-	 * 校验密码
+	 * 校验pass
 	 * 
 	 * @param password
 	 * @return 校验通过返回true，否则返回false
 	 */
-	public static boolean isPassword(String password) {
-		return Pattern.matches(REGEX_PASSWORD, password);
+	public static boolean isPass(String pass) {
+		return Pattern.matches(REGEX_PASS, pass);
 	}
 
 	/**
