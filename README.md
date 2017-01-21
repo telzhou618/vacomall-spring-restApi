@@ -15,8 +15,11 @@
 11. 集成Swagger2接口管理.
 
 ```
-### DEMO运行结果
+### 快速开始
 ```
-![输入图片说明](http://git.oschina.net/uploads/images/2016/1230/113028_70186e4b_89451.png "在这里输入图片标题")
+1. cp ~/Vacomall-Spring-RestApi
+2. mvn clean package
+3. mvn jetty:run
+4. http://localhost:8080/swagger-ui.html
 
 声明:本项目仅供参考学习，如有不合理之处请大家多多指教。
